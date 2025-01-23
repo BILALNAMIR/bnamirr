@@ -1,0 +1,119 @@
+/* això és un comentari en css */
+/* a tots els elements de tipus link (a) se'ls aplicarà el que hi ha
+dins el parèntesis
+en aquest cas es posaran en color cyan */
+body {
+    background-color: #182747; /* Cambia a este color */
+    color: #FFFFFF; /* Cambia el color del texto si es necesario para contraste */
+  }
+  #menu-principal a {
+    text-align: left; /* Centra el contenido horizontalmente */
+    margin-right: 20px; /* Espacio entre enlaces */
+    text-decoration: none; /* Elimina la línea debajo del texto */
+    color: #ffffff; /* Cambia el color del texto (opcional) */
+    font-family: Arial, sans-serif; /* Estilo de fuente (opcional) */
+    font-size: 16px; /* Tamaño del texto (opcional) */
+  }
+
+  
+  #menu-principal a:hover {
+    color: #ff8000; /* Cambia el texto a blanco */
+    background-color: #182747; /* Fondo al pasar el cursor */
+  }
+  #al a:hover {
+    color: #4067bb; /* Cambia el texto a blanco */
+  }
+  #all a:hover {
+    color: #a95dba; /* Cambia el texto a blanco */
+  }
+ 
+
+  header  {
+    text-align: center; /* Centra el contenido horizontalmente */
+  }
+  
+  header img.Logo {
+    display: inline-block; /* Asegura que la imagen respete el centrado */
+    max-width: 500px; /* Tamaño del logo ajustable */
+  }
+  #ima1 {
+    width: 100%; /* Ancho de 300px */
+    height: auto; /* Altura proporcional al ancho */
+  }
+  #ima2 {
+    width: 100%;     
+    height: auto; /* Altura proporcional al ancho */
+  }
+  #ima3 {
+    width: 100%;     
+    height: auto; /* Altura proporcional al ancho */
+  }
+
+a {
+    color:rgb(255, 255, 255);
+    }
+    /* com referenciar a un identificador */
+    #tit {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    }  
+    
+  
+    /* possem els menús en horitzontal, i sí, podem possar a la vegada més
+d'una referència */
+ul, li {
+    padding: 0,0;
+    margin: 2px ,2px;
+    /* atenció la característica display que és molt potent */
+    }
+    
+
+
+    /* podem fer que els elements li tinguin un determinat color, marge
+    exterior i interior (margin i padding)*/
+    article.perfum {
+        opacity: 5;		
+        border-radius: 50px;
+        box-shadow: 3px 3px 10px rgb(249, 120, 0);
+        background-color: #000000;
+        color: white;
+        border: 2px solid black;
+        margin: 2%;
+        padding: 15px;
+        display: inline-block;
+        width: 21%;
+        height: 200px; 
+        text-align: center; 
+        position: relative; /* Para controlar mejor la posición de los elementos */
+   
+   
+    }
+    
+    .producto-img {
+        width: 20%; 
+        height: auto;
+        margin-bottom: 30px;
+    }
+    
+    article.perfum h3 {
+        position: absolute;
+        bottom: 15px; 
+        width: 100%;
+        text-align: center;
+        margin: 1;
+        
+    }
+    h4 {
+        text-align: center;
+        
+    }
+    footer {
+        opacity: 0.6;		
+        border-radius: 50px;
+        box-shadow: 3px 3px 10px rgb(0, 0, 0);
+        background-color:#D8D8D8  ;
+        padding: 10px, 10px;
+        margin: 0;
+        }
+        
+    
