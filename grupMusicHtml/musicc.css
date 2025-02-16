@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0 ;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Bebas Neue", sans-serif;
+    /*background-color: #3D0000;*/
+}
+
+ul {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+header{
+    height: 100vh;
+    background: url('images/2,U2.PNG') center center/cover no-repeat;
+    
+}
+
+#navbar {
+    display: flex ;
+    justify-content: space-between;
+   /* background-color: #000000;*/
+}
+
+#navbar img {
+
+    width: 150px;
+    margin-left: 10px;
+}
+#navbar ul  {
+    display: flex;
+    margin-right: 100px;
+    margin-top: 60px;
+    
+}
+#navbar ul li a  {
+
+    padding: 20px 20px ;
+    color: #ffffff;
+    font-weight: 400;
+    
+}
+#navbar ul li a:hover{
+
+    border-bottom: 2px solid #FF0000;
+    
+
+}
+
+/**/
+
+header .artistas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: px;
+    height: 75%;
+}
+
+header .artistas h1{
+    font-size: 40px;
+    color: #ffffff;
+}
+header .artistas p{
+    font-size: 20px;
+    margin: 20px 0 40px;
+    color: #dfdada;
+}
+.colorParaU2{
+    color:#FF0000 ;
+}
+.colorAudio{
+    color: #ffffff;
+}
+
+/*about*/
+
+.contingut{
+/*background-color: rgb(190, 190, 190) ;*/
+max-width: 1200px;
+margin: auto;
+
+}
+
+#aboutimg{
+    height: 80vh;
+    background: url('images/u2-portrait-2014.webp') center center/cover no-repeat
+    
+
+}
+
+#about{
+    height: 30px;
+    display: flex ;
+    justify-content: center;
+    align-items: center ;
+    background-color: #FF0000;
+}
+
+#about .titul{
+    text-align: center;
+    margin-bottom: 1px;
+}
+
+#about h2 {
+    color: #000000;
+}
+.btn{
+    display: inline-block;
+    padding: 0px 0px;
+    border: none;
+    border-radius: 10px;
+}
+.btn-secondary{
+    color: rgb(255, 255, 255) ;
+    background: #000000;
+    transition: 1s;
+}
+.btn-secondary:hover{
+    background: #FF0000 ;
+   transition: 1s;
+}
+#about a {
+    font-size: 25px;
+}
+
+.link {
+    text-align: center;
+    margin-top: 6px;
+  }
+
+/*noticies*/
+#noticies{
+    height: 30vh;
+    margin-top: 170px;
+    
+
+}
+
+
+#noticies h2{
+    color: #000000;
+    text-align: center;
+}
+
+#noticies .titul-noti{
+    background: #ff0000;
+}
+
+#noticies .news-container{
+
+    background: #000000;
+}
+
+
+/*copiat*/
+.news-container {
+    display: flex;
+    justify-content: center; /* Centra els elements dins del contenidor */
+    gap: 40px; /* Espai entre notícies */
+    overflow-x: auto; /* Permet desplaçament horitzontal si hi ha moltes */
+    padding: 20px 0;
+  }
+  /*copiat f*/
+  .news-item {
+    width: 300px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .news-item img {
+    width: 300px;
+  height: 200px;
+    border-radius: 10px;
+  }
+  
+  .news-item p {
+    margin: 5px 0;
+    font-size: 12px;
+    color: #555;
+  }
+  
+  .news-item a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .news-item a:hover {
+    color: red;
+  }
+  
+/*taula*/
+
+
+.taula {
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    margin-top: 187px;
+    background: #000000;
+}
+/*copiat*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    border: 1px solid #ffffff;
+    padding: 12px;
+
+    text-align: center;
+    color: #ffffff;
+}
+
+th {
+    background-color: #201e1e;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: #950101 ;
+    transition: 0.8s  ;
+}
+/*copiat f*/
+
+
+/*vedio*/
+
+
+.titull-noti {
+   
+    margin-top: 20px;
+    height: 100vh;
+    background: url('images/7,U2.jpg') top center/cover no-repeat
+    
+}
+
+h1 {
+    
+    text-align: center;
+    color: #ffd1d1;
+}
+.videos{
+    
+    height: 140vh;
+    background: #181818;
+}
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    padding: 10px;
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video-item {
+    /*background-color: #fff;*/
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-item:hover {
+    transform: translateY(5px);
+    box-shadow: 0 8px 16px rgba(255, 0, 0, 0.3);
+}
+
+/*mapa*/
+
+
+.titull-noti2 {
+   
+    margin-top: 20px;
+    height: 20vh;
+    background: #181818;    
+}
+
+
+
