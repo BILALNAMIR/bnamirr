@@ -1,0 +1,307 @@
+/* Definició de colors */
+:root {
+  --color-primary: #C14600;  /* Rojós */
+  --color-secondary: #FF9D23; /* Groc taronja */
+  --color-light: #E5D0AC;     /* Beige clar */
+  --color-background: #FEF9E1; /* Creme clar */
+  --color-dark: #1b1b32;      /* Fons fosc */
+}
+
+/* Estils generals */
+body {
+  font-family: 'Honk', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background); /* Creme clar com a fons */
+  color: var(--color-dark); /* Text fosc per contrastar */
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--color-primary); /* Rojós per títols */
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--color-primary); /* Rojós */
+  padding: 10px 20px;
+}
+
+.navbar-brand img {
+  max-width: 50px;
+}
+
+.navbar-nav .nav-link {
+  color: white; /* Color blanc per enllaços de la navbar */
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--color-secondary); /* Groc taronja per enllaços al passar el ratolí */
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 50px 0;
+  background-color: var(--color-dark); /* Fons fosc per contrastar amb la imatge */
+  color: var(--color-light); /* Text clar per contrastar */
+}
+
+.hero img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
+.hero h1, .hero h2 {
+  margin: 20px 0;
+}
+
+/* About Me */
+.about-me {
+  padding: 50px 0;
+  background-color: var(--color-light); /* Beige clar per fons */
+  color: var(--color-dark); /* Text fosc per llegibilitat */
+  text-align: center;
+}
+
+.about-me h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary); /* Rojós per títols */
+}
+
+.about-me p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-primary); /* Rojós per botons */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secondary); /* Groc taronja per hover */
+}
+
+.btn-danger {
+  background-color: var(--color-dark); /* Fons fosc per botons de perill */
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: var(--color-secondary); /* Groc taronja per hover */
+}
+
+/* Experiència */
+.experiencia {
+  background-color: var(--color-light); /* Beige clar per fons */
+  padding: 50px 0;
+}
+
+.experiencia .columna {
+  background-color: var(--color-background); /* Creme clar per fons de columna */
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.experiencia .columna i {
+  font-size: 3rem;
+  color: var(--color-secondary); /* Groc taronja per ícons */
+  margin-bottom: 20px;
+}
+
+.experiencia .columna p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.experiencia .badge {
+  background-color: var(--color-primary); /* Rojós per badges */
+  margin: 5px;
+}
+
+/* Projectes */
+.projectes {
+  padding: 50px 0;
+  background-color: var(--color-background); /* Creme clar per fons */
+  text-align: center;
+}
+
+.projectes h2 {
+  color: var(--color-primary); /* Rojós per títols */
+}
+
+.projectes .projecte {
+  margin-bottom: 30px;
+}
+
+.projectes iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.projectes h4 {
+  margin-top: 15px;
+  font-size: 1.5rem;
+  color: var(--color-primary); /* Rojós per títols de projecte */
+}
+
+.projectes p {
+  font-size: 1rem;
+  color: var(--color-dark); /* Text fosc per llegibilitat */
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-dark); /* Fons fosc */
+  color: var(--color-light); /* Text clar */
+  padding: 50px 0;
+  text-align: center;
+}
+
+footer .footer-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+footer .social-icons {
+  margin-bottom: 20px;
+}
+
+footer .social-icons a {
+  color: var(--color-light); /* Blanc per a les icones socials */
+  font-size: 1.5rem;
+  margin: 0 10px;
+}
+
+footer .social-icons a:hover {
+  color: var(--color-secondary); /* Groc taronja per hover */
+}
+
+footer .drets {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-nav {
+      text-align: center;
+  }
+
+  .hero {
+      padding: 30px 0;
+  }
+
+  .about-me {
+      padding: 30px 0;
+  }
+
+  .experiencia .columna {
+      padding: 20px;
+  }
+
+  .projectes .projecte {
+      margin-bottom: 20px;
+  }
+
+  footer {
+      padding: 30px 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Estils per als projectes */
+.projecte {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecte hover per les imatges */
+.projecte img {
+  transition: transform 0.3s ease;
+}
+
+.projecte:hover img {
+  transform: scale(1.05); /* Amplia la imatge quan passes el ratolí */
+}
+
+.projecte:hover {
+  transform: translateY(-10px); /* Desplaça el projecte cap amunt */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Afegeix una ombra per destacar l'element */
+}
+
+/* Efecte hover per a títols i descripcions */
+.projecte h4, .projecte p {
+  transition: color 0.3s ease;
+}
+
+.projecte:hover h4 {
+  color: var(--color-secondary); /* Canvia el color del títol a groc taronja */
+}
+
+.projecte:hover p {
+  color: var(--color-dark); /* Fes que el text sigui més fosc per contrastar */
+}
+
+/* Efecte de transició en enllaços */
+.projecte a {
+  position: relative;
+  display: inline-block;
+}
+
+.projecte a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.projecte a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Animació de botons dins dels projectes */
+.projecte .btn-primary {
+  transition: background-color 0.3s ease;
+}
+
+.projecte .btn-primary:hover {
+  background-color: var(--color-secondary); /* Canvia el color de fons quan es passa el ratolí */
+}
+
+/* Efecte hover a la secció de Projectes */
+.projectes {
+  padding: 50px 0;
+  background-color: var(--color-background); /* Creme clar per fons */
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.projectes:hover {
+  background-color: var(--color-light); /* Canvia el fons quan es passa el ratolí sobre tota la secció */
+}

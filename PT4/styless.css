@@ -1,0 +1,201 @@
+/* Estils generals */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #001524; /* Color de fons per defecte */
+    color: #D6CC99; /* Color de text per defecte */
+    text-align: center;
+}
+
+nav {
+    background-color: #001524;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #FDE5D4;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #D6CC99;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('ruta-de-la-teva-foto.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.hero h1 {
+    color: #FDE5D4;
+    font-size: 48px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+header {
+    display: none;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #D6CC99;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    color: #001524;
+}
+
+/* Columnes per al text */
+.columns {
+    column-count: 2;
+    column-gap: 30px;
+    text-align: justify;
+    padding: 10px;
+}
+
+/* Galeria d'imatges */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Agraïments */
+.credits-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.credits-links img {
+    width: 120px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.credits-links img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: #445D48;
+    color: #FDE5D4;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Media Queries */
+
+/* Mòbil petit (<576px) */
+@media (max-width: 576px) {
+    body {
+        background-color: #F0F0F0; /* Color de fons més clar per a mòbil petit */
+        color: #333333; /* Color de text més fosc per a mòbils petits */
+    }
+    nav {
+        background-color: #2C3E50; /* Canviem el color de la barra de navegació per a mòbil petit */
+    }
+    nav ul li a {
+        color: #34495E; /* Enllaços més foscos en mòbil petit */
+    }
+    .hero h1 {
+        font-size: 32px;
+        padding: 15px 20px;
+        background: rgba(0, 0, 0, 0.7); /* Canvi de fons més fosc per a la capçalera */
+    }
+    footer {
+        font-size: 14px;
+        background-color: #34495E; /* Fons més fosc en el peu de pàgina */
+        color: #ECF0F1; /* Color de text més clar */
+    }
+}
+
+/* Tablet (de 576px a 992px) */
+@media (min-width: 576px) and (max-width: 992px) {
+    body {
+        background-color: #ffffff; /* Color de fons més clar per a pantalles de mida mitjana */
+        color: #2C3E50; /* Text més fosc per a usuaris de tablet */
+    }
+    nav {
+        background-color: #2C3E50; /* Barra de navegació més fosca per a tablet */
+    }
+    nav ul li a {
+        color: #1ABC9C; /* Color d'enllaços més viu en tablet */
+    }
+    .hero h1 {
+        font-size: 40px;
+        background: rgba(0, 0, 0, 0.6); /* Fons més clar en la capçalera */
+    }
+    footer {
+        font-size: 16px;
+        background-color: #16A085; /* Fons verd per al peu de pàgina */
+        color: #ffffff; /* Text blanc en peu de pàgina */
+    }
+}
+
+/* PC (pantalles grans >992px) */
+@media (min-width: 992px) {
+    body {
+        background-color: #001524; /* Fons original per a pantalles grans */
+        color: #D6CC99; /* Text clar per a PC */
+    }
+    nav {
+        background-color: #001524; /* Barra de navegació fosc per a pantalles grans */
+    }
+    nav ul li a {
+        color: #FDE5D4; /* Enllaços clars per a PC */
+    }
+    .hero h1 {
+        font-size: 48px;
+        background: rgba(0, 0, 0, 0.5); /* Fons fosc per a capçalera en PC */
+    }
+    footer {
+        font-size: 18px;
+        background-color: #445D48; /* Fons fosc per al peu de pàgina */
+        color: #FDE5D4; /* Text clar en peu de pàgina */
+    }
+}
