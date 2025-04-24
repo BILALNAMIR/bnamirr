@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+<h2>Converteix aquestes funcions en funcions de fletxa</h2>
+<p id="demo"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+
+
+<script>
+
+let varGlobal=5;
+let suma =(a,b)=> { return (a+b)};
+let expo=()=>{return (varGrlobal**2)};
+document.getElementById("demo").innerHTML =`${suma(2,5)}`;
+document.getElementById("demo2").innerHTML =`${peix("><((((*>",3)}`;
+document.getElementById("demo3").innerHTML =`${expo()}`;
+saluda();
+
+
+/*function suma(a,b)  {
+     return (a+b);
+  }
+*/
+function peix(dibuix,vegades) {
+  let retorna="";
+  for (let i=0;i<vegades;i++)  {
+       retorna=retorna+dibuix+"<br><br>";
+   }
+   return(retorna);
+ }
+
+        let peix=(dibuix,vegades)=>{
+            let retorna="";
+        for (let i=0;i<vegades;i++)  {
+            retorna=retorna+dibuix+"<br><br>";
+        }
+        return(retorna);
+        }
+
+/*
+function expo(){
+    return (varGlobal**2);
+}
+*/
+/*
+function saluda(){
+    document.getElementById("demo4").innerHTML ="Hola!"
+}
+    */
+
+        let saludar=()=>{document.getElementById("demo4").innerHTML ="Hola!"};
+
+</script>
+
+</body>
+
+</html>
