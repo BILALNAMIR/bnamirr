@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilal Namir</title>
+</head>
+<body>
+    <h1>Bilal Namir</h1>
+    <a href="exercicis/exercici1/ex1.html">Execici 1</a>
+    <h1></h1>
+    <a href="grupMusicHtml/musicBox.html">Execici 2</a>
+    <h1></h1>
+    <a href="pintor/pintoor.html">Execici 3</a>
+    <h1></h1>
+    <a href="PT4/SantPeredeVallhonesta.html">Execici 4</a>
+    
+</body>
+</html>
