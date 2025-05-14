@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+            <title>Whac-A-Mole</title>
+           <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #c2f0c2;
+      height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    }
+
+        .hole {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .hole img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    }
+    .mole {
+      background-image: url('mole.png'); /* substitueix-ho */
+      background-size: cover;
+    }
+
+    .hit {
+      background-image: url('hammer.png'); /* substitueix-ho */
+      background-size: cover;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: #ffeeaa;
+    }
+
+    .buttons button:hover {
+      background-color: #ffdd88;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Fes clic al botó per colpejar!</h2>
+  <div id="lol">Puntuació : 0</div>
+    <div id="lop">Nivell : 1</div>
+
+
+  <div class="grid">
+    <div class="hole" id="hole0">
+        <img id="imag1" src="topoNo.jpg" alt="Talp" onclick="pulsar(1)">
+    </div>
+    <div class="hole" id="hole1">
+        <img id="imag2" src="topoNo.jpg" alt="Talp" onclick="pulsar(2)">
+    </div>
+    <div class="hole" id="hole2">
+        <img id="imag3" src="topoNo.jpg" alt="Talp" onclick="pulsar(3)">
+    </div>
+    <div class="hole" id="hole3">
+        <img id="imag4" src="topoNo.jpg" alt="Talp" onclick="pulsar(4)">
+    </div>
+    <div class="hole" id="hole4">
+        <img id="imag5" src="topoNo.jpg" alt="Talp" onclick="pulsar(5)">
+    </div>
+    <div class="hole" id="hole5">
+        <img id="imag6" src="topoNo.jpg" alt="Talp" onclick="pulsar(6)">
+    </div>
+    <div class="hole" id="hole6">
+        <img id="imag7" src="topoNo.jpg" alt="Talp" onclick="pulsar(7)">
+    </div>
+    <div class="hole" id="hole7">
+        <img id="imag8" src="topoNo.jpg" alt="Talp" onclick="pulsar(8)">
+    </div>
+    <div class="hole" id="hole8">
+        <img id="imag9" src="topoNo.jpg" alt="Talp" onclick="pulsar(9)">
+    </div>
+</div>
+
+  <script>
+    let puntsTotal = 0;
+    let num =0;
+    let memoryNumAleat=1;
+    var audio = new Audio("boing.mp3");
+    let temps = 1500;
+    let nivell = 0;
+    let interval1;
+    let option = true;
+    
+
+
+
+                        
+
+
+    function pulsar(a){
+        if(num===a){
+            audio.play();
+            puntsTotal++;
+            if(puntsTotal == 10 || puntsTotal == 20 || puntsTotal == 30 || puntsTotal == 40 || puntsTotal == 50){
+                    nivell++;
+                    document.getElementById("lop").textContent= "Nivell : " + nivell;
+                     option = true;
+
+
+            }
+           
+
+        }
+        document.getElementById(`imag${a}`).src= "topoPam.jpg";
+            setTimeout( ()=> {document.getElementById(`imag${a}`).src= "topoNo.jpg"} , 500);
+         document.getElementById("lol").textContent=  "Puntuació : " + puntsTotal;
+    }        
+
+
+    function iniciarInterval(){
+
+        if (interval1) {
+            clearInterval(interval1);
+        }
+
+        interval1 = setInterval(()=>    { let numAleat = Math.floor(Math.random() * (10-1) + 1 );
+                                                    if (numAleat == num) {
+                                                        numAleat = Math.floor(Math.random() * (10-1) + 1 );
+                                                    }
+                                                    num = numAleat;
+                                                    document.getElementById(`imag${memoryNumAleat}`).src="topoNo.jpg"; 
+                                                    document.getElementById(`imag${numAleat}`).src="topoSi.jpg"; 
+                                                    memoryNumAleat = numAleat;
+                                                        if (temps>250 && option) {
+                                                            //if (nivell == 1 && puntsTotal==11  || nivell == 2 && puntsTotal==21 || nivell == 3 && puntsTotal==31|| nivell == 4 && puntsTotal==41 || nivell == 5 && puntsTotal==51|| nivell == 61 && puntsTotal==61  ) {
+                                                                temps = temps - 250 ;
+                                                                option = false;
+                                                                iniciarInterval();
+                                                                
+                                                          //  }
+                                                        
+                                                        }
+                                },temps);
+
+        
+
+     }
+        
+
+iniciarInterval();
+
+
+
+
+
+    </script>
+</body>
+</html>
