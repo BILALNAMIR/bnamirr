@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ml5.js - Dibuixar mans i comptador amb música via Audio object</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@0.12.2/dist/ml5.min.js"></script>
+</head>
+<body>
+<script>
+let video;
+let poseNet;
+let poses = [];
+let timer = 60;
+let timerRunning = false;
+let handsInCircle = false;
+let score = 0;
+
+const circleX = 640;
+const circleY = 50;
+const circleRadius = 250;
+
+let fallingCircles = [];
+let spawnInterval = 120; // Cada 2 segons (a 60 fps)
+
+let audio;
+
+function setup() {
+  createCanvas(1280, 720);
+  video = createCapture(VIDEO);
+  video.size(1280, 720);
+  video.hide();
+
+  poseNet = ml5.poseNet(video, () => console.log("PoseNet carregat!"));
+  poseNet.on('pose', gotPoses);
+  textFont('Arial');
+
+  // Crear l'objecte Audio amb la URL
+  audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3');
+  audio.loop = true; // que soni en bucle
+  audio.volume = 0.3; // ajustar volum (opcional)
+}
+
+function gotPoses(results) {
+  poses = results;
+}
+
+function draw() {
+  background(0);
+  image(video, 0, 0);
+
+  // Cercle verd fix (si el joc no ha començat)
+  if (!timerRunning) {
+    fill(0, 255, 0);
+    noStroke();
+    ellipse(circleX, circleY, circleRadius * 2);
+  }
+
+  // Verifica mans dins cercle verd per començar
+  if (poses.length > 0 && !timerRunning) {
+    let pose = poses[0].pose;
+    let leftWrist = pose.keypoints.find(kp => kp.part === 'leftWrist');
+    let rightWrist = pose.keypoints.find(kp => kp.part === 'rightWrist');
+
+    if (leftWrist && rightWrist) {
+      let leftDist = dist(leftWrist.position.x, leftWrist.position.y, circleX, circleY);
+      let rightDist = dist(rightWrist.position.x, rightWrist.position.y, circleX, circleY);
+
+      if (leftDist < circleRadius && rightDist < circleRadius) {
+        handsInCircle = true;
+        startTimer();
+      }
+    }
+  }
+
+  // Dibuixa punts vermells a canells i turmells
+  let hands = [];
+  if (poses.length > 0) {
+    let pose = poses[0].pose;
+    for (let i = 0; i < pose.keypoints.length; i++) {
+      let keypoint = pose.keypoints[i];
+      if (keypoint.score > 0.2 && (keypoint.part.includes('Wrist') || keypoint.part.includes('Ankle'))) {
+        fill(255, 0, 0);
+        noStroke();
+        ellipse(keypoint.position.x, keypoint.position.y, 12, 12);
+      }
+
+      if (keypoint.score > 0.2 && keypoint.part.includes('Wrist')) {
+        hands.push({x: keypoint.position.x, y: keypoint.position.y});
+      }
+    }
+  }
+
+  // Si el temporitzador corre, actualitza i mostra cercles que cauen
+  if (timerRunning) {
+    // Reprodueix música si no està tocant
+    if (audio.paused) {
+      audio.play().catch(e => {
+        // Potser l'usuari encara no ha interaccionat, els navegadors bloquegen automàticament so
+        console.log("No es pot reproduir encara: ", e);
+      });
+    }
+
+    // Generar nous cercles
+    if (frameCount % spawnInterval === 0) {
+      let newCircle = {
+        x: random(100, width - 100),
+        y: -50,
+        radius: 30,
+        speed: 3
+      };
+      fallingCircles.push(newCircle);
+    }
+
+    // Dibuixa i mou els cercles que cauen
+    for (let i = fallingCircles.length - 1; i >= 0; i--) {
+      let c = fallingCircles[i];
+      fill(255, 100, 0);
+      noStroke();
+      ellipse(c.x, c.y, c.radius * 2);
+      c.y += c.speed;
+
+      // Comprova si alguna mà el toca
+      for (let h of hands) {
+        let d = dist(h.x, h.y, c.x, c.y);
+        if (d < c.radius + 15) {
+          fallingCircles.splice(i, 1);
+          score++;
+          break;
+        }
+      }
+
+      // Elimina cercles que surten de la pantalla
+      if (c.y > height + 50) {
+        fallingCircles.splice(i, 1);
+      }
+    }
+
+    // Mostrar temporitzador
+    fill(255, 0, 0);
+    textSize(64);
+    textAlign(CENTER, CENTER);
+    text(timer, width / 2, height / 2);
+
+    // Mostrar puntuació
+    fill(0, 255, 0);
+    textSize(48);
+    textAlign(LEFT, TOP);
+    text("Punts: " + score, 20, 20);
+
+    // Decrementar el temps
+    if (timer > 0 && frameCount % 60 === 0) {
+      timer--;
+    }
+
+    if (timer === 0) {
+      resetGame();
+    }
+  } else {
+    // Para la música quan el joc no està en marxa
+    if (!audio.paused) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }
+}
+
+function startTimer() {
+  if (!timerRunning) {
+    timerRunning = true;
+    handsInCircle = false;
+  }
+}
+
+function resetGame() {
+  timerRunning = false;
+  timer = 60;
+  fallingCircles = [];
+  score = 0;
+}
+</script>
+</body>
+</html>
