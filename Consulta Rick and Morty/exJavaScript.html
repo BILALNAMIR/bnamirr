@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fets sobre gats</title>
+  </head>
+  <body>
+    <h1>Fets sobre gats:</h1>
+    <p id="fet"></p>
+    <button onclick="femfetch()">Mostra un fet</button>
+
+
+    <script>
+      function femfetch()
+        {
+       
+        fetch("https://rickandmortyapi.com/api/character/?name=rick")
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("fet").textContent = data.results[0].name;
+          });
+        }
+    </script>
+  </body>
+</html>

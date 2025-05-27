@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rick and Morty Cercador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    .contenidor {
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e65c00;
+    }
+
+    #carregant {
+      color: #888;
+      font-style: italic;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    .resultat {
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .resultat img {
+      width: 300px;
+      border-radius: 10px;
+      border: 2px solid #ffa64d;
+    }
+
+    .info {
+      text-align: left;
+    }
+
+    .info p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Buscar el nom d'un personatge de Rick and Morty</h1>
+
+  <div class="contenidor">
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" >
+    <button onclick="buscar()">Buscar</button>
+    <p id="carregant" style="display: none;">Carregant...</p>
+  </div>
+
+  <div id="resultat"></div>
+
+  <script>
+    function buscar() {
+      var nom = document.getElementById("nom").value;
+      var resultat = document.getElementById("resultat");
+      var carregant = document.getElementById("carregant");
+
+      resultat.innerHTML = "";
+      carregant.style.display = "block";
+
+      fetch("https://rickandmortyapi.com/api/character/?name=" + nom)
+        .then(function(resposta) {
+          return resposta.json();
+        })
+        .then(function(dades) {
+          carregant.style.display = "none";
+
+          if (dades.results && dades.results.length > 0) {
+            var p = dades.results[0];
+
+            resultat.innerHTML =
+              "<div class='resultat'>" +
+              "<img src='" + p.image + "' alt='Imatge'>" +
+              "<div class='info'>" +
+              "<p><strong>Nom:</strong> " + p.name + "</p>" +
+              "<p><strong>Espècie:</strong> " + p.species + "</p>" +
+              "<p><strong>Gènere:</strong> " + p.gender + "</p>" +
+              "<p><strong>Origen:</strong> " + p.origin.name + "</p>" +
+              "</div>" +
+              "</div>";
+          } else {
+            resultat.innerHTML = "<p class='error'>No exesteix</p>";
+          }
+        })
+        .catch(function(error) {
+          carregant.style.display = "none";
+          resultat.innerHTML = "<p class='error'>Error en la cerca.</p>";
+        });
+    }
+  </script>
+
+</body>
+</html>
